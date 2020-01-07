@@ -55,3 +55,30 @@ fish compile.fish
 バックアップをこまめに行うことが可能です．
 
 v0.0.0やv1.0.0のような形式でタグ付けを行いプッシュすると良いです．
+
+![](release.png)のreleaseにPDFが生成されます．
+
+もしデプロイ時にGitHub Actionsでエラーが出る場合は
+`.github > workflows > main.yml`のmain.ymlを
+`Ganariya`からあなたのGitHubのアカウント名にしてあげてください．改善される可能性があります．
+
+```yml
+name: LaTeX to PDF
+
+on:
+  push:
+    paths: main.tex
+    tags: v*.*.*
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set up Git repository
+        uses: actions/checkout@v1
+      - name: Build docker image
+        uses: あなたのGitHubのアカウント名/thesis_template/.github/actions/latex@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+```
