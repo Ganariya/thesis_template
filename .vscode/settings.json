@@ -5,6 +5,7 @@
         "**/**.gz": true,
         "**/**.toc": true,
         "**/**.aux": true,
+        "**/**.out": true,
         "**.aux":true,
         "**.log":true,
         "**.toc":true,
@@ -12,5 +13,6 @@
         "**.gz":true,
         "**.lof":true,
         "**.lot":true,
+        "**.out":true
     }
 }

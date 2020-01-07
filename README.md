@@ -30,6 +30,7 @@ fish compile.fish
 これによって，LaTeXがコンパイルされてPDFが生成されます．
 
 ただし，Dockerが起動されている必要があるため，Dockerをインストールしていない場合はインストールしてください．
+また起動していない場合は，起動させてから上記の`fish compile.fish`などを利用してください．
 
 # How to Use(Visual Studio Code)
 
@@ -52,3 +53,5 @@ fish compile.fish
 
 タグ付きでプッシュしたとき，PDFをコンパイルしてGithubのAssetにPDFを追加するようになっています．
 バックアップをこまめに行うことが可能です．
+
+v0.0.0やv1.0.0のような形式でタグ付けを行いプッシュすると良いです．
