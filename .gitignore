@@ -1,0 +1,13 @@
+.DS_Store
+
+*.aux
+*.log
+*.gz
+*.toc
+*.idx
+*.lot
+*.lof
+*.dvi
+*.pdf
+*.out
+

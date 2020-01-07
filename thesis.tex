@@ -1,0 +1,125 @@
+% jsreportを使用します．
+% hyperrefのためにdvipdfmxはここで読み込みます
+\documentclass[a4paper,11pt,dvipdfmx]{jsreport}
+
+% urlパッケージです　URLを文書に埋め込むことができます．
+\usepackage{url}
+\usepackage{graphicx}
+
+% Hを利用して強制的に表や図をその場に埋め込めますが，使わないほうが良いようです
+\usepackage{here}
+
+% ソースコードを埋め込むようです
+% jlistingはstyファイルがディレクトリに入っています．
+\usepackage{listings, jlisting}
+\usepackage{ascmac,txfonts,txfonts}
+
+% colorを使用できます
+\usepackage{color}
+
+% PDF内リンクがおこなえます．　読みやすくなります．
+% レイアウトが崩れる場合は公式サイトを確認してエラーを直します．
+\usepackage[setpagesize=false]{hyperref}
+\usepackage{pxjahyper}
+\usepackage{cite}
+
+% アルゴリズムパッケージです
+% \usepackage{algorithm}
+% \usepackage{algorithmic}
+
+
+% ソースコードを埋め込む場合の言語設定
+\lstset{
+	%プログラム言語(複数の言語に対応，C,C++も可)
+ 	language = Python,
+ 	%背景色と透過度
+ 	backgroundcolor={\color[gray]{.99}},
+ 	%枠外に行った時の自動改行
+ 	breaklines = true,
+ 	%自動改行後のインデント量(デフォルトでは20[pt])	
+ 	breakindent = 10pt,
+ 	%標準の書体
+ 	basicstyle = \ttfamily\scriptsize,
+ 	%コメントの書体
+ 	commentstyle = {\itshape \color[cmyk]{1,0.4,1,0}},
+ 	%関数名等の色の設定
+ 	classoffset = 0,
+ 	%キーワード(int, ifなど)の書体
+ 	keywordstyle = {\bfseries \color[cmyk]{0,1,0,0}},
+ 	%表示する文字の書体
+ 	stringstyle = {\ttfamily \color[rgb]{0,0,1}},
+ 	%枠 "t"は上に線を記載, "T"は上に二重線を記載
+	%他オプション：leftline，topline，bottomline，lines，single，shadowbox
+ 	frame = TBrl,
+ 	%frameまでの間隔(行番号とプログラムの間)
+ 	framesep = 5pt,
+ 	%行番号の位置
+ 	numbers = left,
+	%行番号の間隔
+ 	stepnumber = 1,
+	%行番号の書体
+ 	numberstyle = \tiny,
+	%タブの大きさ
+ 	tabsize = 4,
+ 	%キャプションの場所("tb"ならば上下両方に記載)
+ 	captionpos = t
+}
+
+% hlineの設定
+\newcommand{\bhline}[1]{\noalign{\hrule height #1}}  
+\newcommand{\bvline}[1]{\vrule width #1}  
+
+
+% 文書の開始
+\begin{document}
+
+% タイトル
+\input{components/titlepage.tex}
+
+% 概要
+\begin{abstract}
+\input{components/abstract.tex}
+\end{abstract}
+
+% 目次 tocdepth 2で subsectionまでを目次に表示します
+\setcounter{tocdepth}{2}
+\tableofcontents
+\clearpage
+
+% 図目次
+\listoffigures
+\clearpage
+
+% 表目次
+\listoftables
+\clearpage
+
+
+% 本文
+% inputを利用することでコンポーネントベースで卒論を書けます
+\input{components/chap1.tex}
+\input{components/chap2.tex}
+\input{components/chap3.tex}
+\input{components/chap4.tex}
+\input{components/chap5.tex}
+\input{components/chap6.tex}
+\input{components/chap7.tex}
+\input{components/chap8.tex}
+
+\clearpage
+
+% 謝辞
+\input{components/acknowledgment.tex}
+
+\clearpage
+
+% 参考文献
+\input{components/biography.tex}
+
+% 付録
+\appendix
+\input{components/appendixA.tex}
+
+\clearpage
+
+\end{document}
