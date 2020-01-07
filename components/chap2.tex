@@ -16,3 +16,47 @@
 
 サブサブセクション
 
+\section{ソースコード}
+
+ソースコードを載せる場合は以下のソースコード\ref{code:paken_day_3}のようにします．
+Pythonのコードを掲載しています．
+C++など他の言語や，行番号を消したい場合はthesis.texのlstsetの設定を変更してください．
+
+\begin{lstlisting}[caption=paken, label=code:paken_day_3]
+    N = int(input())
+
+    S = [input().rstrip() for _ in range(5)]
+    
+    dc = {
+        'W': 0,
+        'B': 1,
+        'R': 2,
+    }
+    
+    dp = [[1e20] * 3 for _ in range(N + 1)]
+    for i in range(3):
+        dp[0][i] = 0
+    
+    # print(dp)
+    
+    for i in range(N):
+    
+        for j in range(3):
+    
+            for k in range(3):
+    
+                if j != k:
+                    cost = 0
+                    for y in range(5):
+    
+                        if S[y][i] == '#':
+                            cost += 1
+                        elif k != dc[S[y][i]]:
+                            cost += 1
+    
+                    dp[i + 1][k] = min(dp[i + 1][k], dp[i][j] + cost)
+    
+    ans = min(dp[N][0], dp[N][1], dp[N][2])
+    print(ans)
+    
+\end{lstlisting}
